@@ -8,10 +8,11 @@ def generate_id():
 def generate_qr_code(data: dict) -> str:
     "This function creates and save our qrcode information"
     unid = generate_id()
-    img = qrcode.make(str({"id": unid, "employee_id": data["employee_id"]}))
-    filename = "{}_{}.png".format(unid, data["name"]) 
+    img = qrcode.make(str({"id": unid, "name":data["data"]["name"]}))
+    filename = "{}_{}.png".format(unid, data["data"]["name"]) 
     img.save(filename)
 
     # save user information to the db
 
     return filename
+
